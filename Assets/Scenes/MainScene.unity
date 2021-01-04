@@ -292,7 +292,7 @@ RectTransform:
   - {fileID: 248748553}
   - {fileID: 1586694517}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -457,7 +457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -750,9 +750,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1264312432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582de9add1155124a8c5fdc27f7afb9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b5a682d1ec067e49b4ef20c18d0188f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridSizeX: 1
+  gridSizeY: 5
+  boxPrefab: {fileID: 3398953798359281490, guid: 48e368520721a5c4a86dee3de13f7385,
+    type: 3}
 --- !u!1 &1586694516
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,11 +864,11 @@ MonoBehaviour:
   boxes:
   - prefab: {fileID: 3398953798359281490, guid: 48e368520721a5c4a86dee3de13f7385,
       type: 3}
-    tag: 0
+    classificationTag: 0
     size: 7
   - prefab: {fileID: 5522685042649674817, guid: a1712c501970be1459e7b933819d522b,
       type: 3}
-    tag: 1
+    classificationTag: 1
     size: 7
 --- !u!4 &1978203752
 Transform:
@@ -878,5 +882,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Box
@@ -7,17 +6,19 @@ namespace Box
     public class ObjectPooler : MonoBehaviour
     {
         public List<Box> boxes;
-
         public Dictionary<int, Queue<GameObject>> boxDictionary;
         public static ObjectPooler Instance;
-
+        
         private void Awake()
         {
             Instance = this;
             boxDictionary = new Dictionary<int, Queue<GameObject>>();
             AddIntoPool();
         }
-
+        
+        /// <summary>
+        /// Add box into pool dictionary
+        /// </summary>
         private void AddIntoPool()
         {
             boxes.ForEach(box =>
@@ -31,22 +32,29 @@ namespace Box
                     objectPool.Enqueue(boxClone);
                 }
                 
-                boxDictionary.Add(box.tag, objectPool);
+                boxDictionary.Add(box.classificationTag, objectPool);
             });
         }
-
-        public GameObject SpawnFromPool(int tag)
+        
+        /// <summary>
+        /// Spawn box from pool dictionary
+        /// </summary>
+        /// <param name="classificationTag">Random box number</param>
+        /// <param name="position">Box position</param>
+        /// <returns>Box fom pool dictionary</returns>
+        public GameObject SpawnFromPool(int classificationTag, Vector2 position)
         {
-            if (!boxDictionary.ContainsKey(tag))
+            if (!boxDictionary.ContainsKey(classificationTag))
             {
-                Debug.LogWarning($"Object with tag {tag} doesn't exist");
+                Debug.LogWarning($"Object with tag {classificationTag} doesn't exist");
                 return null;
             }
 
-            GameObject boxToSpawn = boxDictionary[tag].Dequeue();
+            GameObject boxToSpawn = boxDictionary[classificationTag].Dequeue();
             boxToSpawn.SetActive(true);
+            boxToSpawn.transform.position = position;
             
-            boxDictionary[tag].Enqueue(boxToSpawn);
+            boxDictionary[classificationTag].Enqueue(boxToSpawn);
             
             return boxToSpawn;
         }

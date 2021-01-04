@@ -7,7 +7,7 @@ namespace Box
     public class Box
     {
         public GameObject prefab;
-        public int tag;
+        public int classificationTag;
         public int size;
     }
 }
