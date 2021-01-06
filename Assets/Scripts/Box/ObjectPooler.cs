@@ -21,6 +21,7 @@ namespace Box
         /// </summary>
         private void AddIntoPool()
         {
+            int boxIndex = 0;
             boxes.ForEach(box =>
             {
                 Queue<GameObject> objectPool = new Queue<GameObject>();
@@ -29,9 +30,11 @@ namespace Box
                 {
                     GameObject boxClone = Instantiate(box.prefab);
                     boxClone.SetActive(false);
+                    boxClone.name = boxIndex.ToString();
                     objectPool.Enqueue(boxClone);
                 }
                 
+                boxIndex++;
                 boxDictionary.Add(box.classificationTag, objectPool);
             });
         }
