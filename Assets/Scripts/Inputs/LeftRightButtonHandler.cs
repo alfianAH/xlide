@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Grid = Box.Grid;
 
 namespace Inputs
@@ -7,7 +9,16 @@ namespace Inputs
     public class LeftRightButtonHandler : MonoBehaviour
     {
         [SerializeField] private Grid grid;
+        [SerializeField] private Text scoreText;
+        [SerializeField] private GameObject wrongPanel;
         
+        private int score;
+
+        private void Start()
+        {
+            score = 0;
+        }
+
         /// <summary>
         /// Check each button
         /// </summary>
@@ -20,12 +31,25 @@ namespace Inputs
             if (correctBox == bottomBoxName)
             {
                 grid.DestroyBox();
-                Debug.Log("Sama");
+                AddScore(10);
             }
             else
             {
-                Debug.Log("Tidak sama");
+                StartCoroutine(ShowWrongPanel(2));
             }
+        }
+
+        private void AddScore(int value)
+        {
+            score += value;
+            scoreText.text = score.ToString();
+        }
+
+        private IEnumerator ShowWrongPanel(float delayTime)
+        {
+            wrongPanel.SetActive(true);
+            yield return new WaitForSeconds(delayTime);
+            wrongPanel.SetActive(false);
         }
     }
 }
