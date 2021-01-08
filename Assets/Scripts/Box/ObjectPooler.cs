@@ -1,11 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Box
 {
+    [Serializable]
+    public class Pool
+    {
+        public GameObject prefab;
+        public int classificationTag;
+        public int size;
+    }
+    
     public class ObjectPooler : MonoBehaviour
     {
-        public List<Box> boxes;
+        public List<Pool> boxes;
         public Dictionary<int, Queue<GameObject>> boxDictionary;
         public static ObjectPooler Instance;
         
