@@ -17,6 +17,8 @@ namespace Box
         public List<Pool> boxes;
         public Dictionary<int, Queue<GameObject>> boxDictionary;
         public static ObjectPooler Instance;
+
+        #region MONOBEHAVIOUR_METHODS
         
         private void Awake()
         {
@@ -24,6 +26,10 @@ namespace Box
             boxDictionary = new Dictionary<int, Queue<GameObject>>();
             AddIntoPool();
         }
+        
+        #endregion
+
+        #region PRIVATE_METHODS
         
         /// <summary>
         /// Add box into pool dictionary
@@ -48,6 +54,10 @@ namespace Box
             });
         }
         
+        #endregion
+
+        #region PUBLIC_METHODS
+        
         /// <summary>
         /// Spawn box from pool dictionary
         /// </summary>
@@ -70,5 +80,7 @@ namespace Box
             
             return boxToSpawn;
         }
+        
+        #endregion
     }
 }

@@ -15,11 +15,17 @@ namespace Inputs
         
         private int score, combo;
 
+        #region MONOBEHAVIOUR_METHODS
+        
         private void Start()
         {
             score = combo = 0;
         }
+        
+        #endregion
 
+        #region PUBLIC_METHODS
+        
         /// <summary>
         /// Check each button
         /// </summary>
@@ -43,6 +49,10 @@ namespace Inputs
                 StartCoroutine(ShowWrongPanel(2));
             }
         }
+        
+        #endregion
+
+        #region PRIVATE_METHODS
         
         /// <summary>
         /// Add score 
@@ -75,5 +85,7 @@ namespace Inputs
             comboText.text = $"Combo x{combo}";
             comboText.gameObject.SetActive(isActive);
         }
+        
+        #endregion
     }
 }

@@ -14,6 +14,8 @@ namespace Timer
         private Text timerText;
         private bool isCountingDown;
 
+        #region MONOBEHAVIOUR_METHODS
+        
         // Start is called before the first frame update
         private void Start()
         {
@@ -44,6 +46,10 @@ namespace Timer
             }
         }
         
+        #endregion
+
+        #region PRIVATE_METHODS
+        
         /// <summary>
         /// Update timer text in UI
         /// </summary>
@@ -51,6 +57,10 @@ namespace Timer
         {
             timerText.text = $"{timerModel.Minutes:00} : {timerModel.Seconds:00}";
         }
+        
+        #endregion
+
+        #region PUBLIC_METHODS
         
         /// <summary>
         /// Add time
@@ -62,5 +72,7 @@ namespace Timer
             isCountingDown = true;
             UpdateTimerText();
         }
+        
+        #endregion
     }
 }

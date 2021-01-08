@@ -10,6 +10,8 @@ namespace Box
         
         private Vector3 startPos, offset;
         private GameObject[,] boxes;
+
+        #region MONOBEHAVIOUR_METHODS
         
         // Start is called before the first frame update
         private void Start()
@@ -17,6 +19,34 @@ namespace Box
             CreateGrid();
         }
         
+        #endregion
+        
+        #region PUBLIC_METHODS
+        
+        /// <summary>
+        /// Get the bottom box
+        /// </summary>
+        /// <returns>boxes[0,0]</returns>
+        public GameObject GetBottomBox()
+        {
+            return boxes[0, 0];
+        }
+        
+        /// <summary>
+        /// Destroy the bottom box
+        /// </summary>
+        public void DestroyBox()
+        {
+            boxes[0, 0].SetActive(false);
+            boxes[0, 0] = null;
+
+            DecreaseRow();
+        }
+        
+        #endregion
+        
+        #region PRIVATE_METHODS
+
         /// <summary>
         /// Create grid when game starts
         /// </summary>
@@ -65,26 +95,6 @@ namespace Box
         }
         
         /// <summary>
-        /// Get the bottom box
-        /// </summary>
-        /// <returns>boxes[0,0]</returns>
-        public GameObject GetBottomBox()
-        {
-            return boxes[0, 0];
-        }
-        
-        /// <summary>
-        /// Destroy the bottom box
-        /// </summary>
-        public void DestroyBox()
-        {
-            boxes[0, 0].SetActive(false);
-            boxes[0, 0] = null;
-
-            DecreaseRow();
-        }
-        
-        /// <summary>
         /// Decrease row in boxes when destroying
         /// </summary>
         private void DecreaseRow()
@@ -125,5 +135,8 @@ namespace Box
                 }
             }
         }
+
+        #endregion
+        
     }
 }

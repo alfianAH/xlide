@@ -8,6 +8,8 @@ namespace Timer
     {
         private float milliseconds;
         private int seconds, minutes;
+
+        #region GETTER_SETER
         
         public float Milliseconds
         {
@@ -26,6 +28,10 @@ namespace Timer
             get => minutes;
             set => minutes = value;
         }
+        
+        #endregion
+
+        #region PUBLIC_METHODS
         
         /// <summary>
         /// Count down
@@ -53,7 +59,7 @@ namespace Timer
                 }
             }
         }
-
+        
         /// <summary>
         /// Convert value and add time
         /// </summary>
@@ -65,5 +71,7 @@ namespace Timer
             seconds += (int) timeConverter[0];
             minutes += (int) timeConverter[1];
         }
+        
+        #endregion
     }
 }
