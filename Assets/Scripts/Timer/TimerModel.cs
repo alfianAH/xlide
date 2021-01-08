@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 
 namespace Timer
 {
@@ -32,31 +33,40 @@ namespace Timer
         #endregion
 
         #region PUBLIC_METHODS
-        
+
         /// <summary>
         /// Count down
         /// </summary>
+        /// <param name="isCountingDown"></param>
         /// <param name="timeIsUp">Events after time is up</param>
-        public void CountDown(Action timeIsUp)
+        /// <param name="updateTimerText"></param>
+        public void CountDown(bool isCountingDown, Action timeIsUp, Action updateTimerText)
         {
-            if (milliseconds >= 1.0f)
+            if(isCountingDown)
             {
-                milliseconds -= 1.0f;
-            
-                // If time is not up, ...
-                if (seconds > 0 || minutes > 0)
+                milliseconds += Time.deltaTime;
+                
+                if (milliseconds >= 1.0f)
                 {
-                    seconds--; // Decrease seconds
-                    if (seconds < 0.0f)
+                    milliseconds -= 1.0f;
+
+                    // If time is not up, ...
+                    if (seconds > 0 || minutes > 0)
                     {
-                        seconds = 59; // Repeat seconds
-                        minutes--; // Decrease minutes;
+                        seconds--; // Decrease seconds
+                        if (seconds < 0.0f)
+                        {
+                            seconds = 59; // Repeat seconds
+                            minutes--; // Decrease minutes;
+                        }
+                    }
+                    else // If time is up, ...
+                    {
+                        timeIsUp();
                     }
                 }
-                else // If time is up, ...
-                {
-                    timeIsUp();
-                }
+                
+                updateTimerText();
             }
         }
         

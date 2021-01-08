@@ -11,49 +11,52 @@ namespace Timer
         [SerializeField] private int defaultMinutes, 
             defaultSeconds;
         [SerializeField] private CanvasGroup warningCanvasGroup;
+        [SerializeField] private GameObject preparationPanel;
+        [SerializeField] private Text timerText;
         
         private TimerModel timerModel;
-        private Text timerText;
         private bool isCountingDown;
         private float startAlpha;
+
+        #region GETTER_SETTER
+
+        public bool IsCountingDown
+        {
+            set => isCountingDown = value;
+        }
+
+        #endregion
 
         #region MONOBEHAVIOUR_METHODS
         
         // Start is called before the first frame update
         private void Start()
         {
-            timerText = GetComponent<Text>();
             startAlpha = warningCanvasGroup.alpha;
-            isCountingDown = true;
+            preparationPanel.SetActive(true);
             
             timerModel = new TimerModel
             {
                 Minutes = defaultMinutes,
                 Seconds = defaultSeconds
             };
+            UpdateTimerText();
         }
         
         // Update is called once per frame
         private void Update()
         {
-            if (isCountingDown)
+            timerModel.CountDown(isCountingDown, () =>
             {
-                timerModel.Milliseconds += Time.deltaTime;
-                
-                timerModel.CountDown(() =>
-                {
-                    isCountingDown = false;
-                    gameOver.SetActive(true);
-                });
-                
-                UpdateTimerText();
-                
-                // If time is 0:10, then give warning effect
-                if (timerModel.Seconds <= 10 && timerModel.Minutes == 0)
-                {
-                    EffectScript.FadeEffect(warningCanvasGroup, startAlpha, 
-                        timerModel.Milliseconds, 1);
-                }
+                isCountingDown = false;
+                gameOver.SetActive(true);
+            }, UpdateTimerText);
+            
+            // If time is 00:10, then give warning effect
+            if (timerModel.Seconds <= 10 && timerModel.Minutes == 0)
+            {
+                EffectScript.FadeEffect(warningCanvasGroup, startAlpha, 
+                    timerModel.Milliseconds, 1);
             }
         }
         
@@ -80,7 +83,6 @@ namespace Timer
         public void AddTime(int value)
         {
             timerModel.AddTime(value);
-            isCountingDown = true;
             UpdateTimerText();
         }
         
