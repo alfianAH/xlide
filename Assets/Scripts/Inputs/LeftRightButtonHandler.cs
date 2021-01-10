@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Effect;
 using UnityEngine;
 using UnityEngine.UI;
 using Grid = Box.Grid;
@@ -60,8 +61,10 @@ namespace Inputs
         /// <param name="value">Additional score</param>
         private void AddScore(int value)
         {
+            int currentScore = score;
             score += value + (int)((combo - 0.5)*10);
-            scoreText.text = score.ToString();
+            StartCoroutine(EffectScript.AddNumber(currentScore, score, 
+                scoreText, 0.01f));
         }
         
         /// <summary>

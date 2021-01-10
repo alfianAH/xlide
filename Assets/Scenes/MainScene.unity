@@ -486,8 +486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: {fileID: 1586694516}
-  defaultMinutes: 0
-  defaultSeconds: 21
+  defaultMinutes: 2
+  defaultSeconds: 0
   warningCanvasGroup: {fileID: 1726976872}
   preparationPanel: {fileID: 661221491}
   timerText: {fileID: 248748555}
@@ -1339,7 +1339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1007179289
 RectTransform:
   m_ObjectHideFlags: 0
