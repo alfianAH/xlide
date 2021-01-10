@@ -8,6 +8,8 @@ namespace Effect
     {
         private static float maxAlpha = 1;
         
+        #region PUBLIC_METHODS
+        
         /// <summary>
         /// Make fade effect continuously
         /// </summary>
@@ -52,6 +54,10 @@ namespace Effect
             }
         }
         
+        #endregion
+
+        #region PRIVATE_METHODS
+        
         /// <summary>
         /// Set increment of units, tens, and so on
         /// </summary>
@@ -70,5 +76,7 @@ namespace Effect
             }
             return increment;
         }
+        
+        #endregion
     }
 }
