@@ -86,7 +86,7 @@ namespace Box
         private void SetBox(int i, int j)
         {
             Vector2 pos = new Vector2(startPos.x + i*offset.x, startPos.y + j*offset.y);
-                    
+            
             int randomBox = Random.Range(0, ObjectPooler.Instance.boxes.Count);
                     
             GameObject box = ObjectPooler.Instance.SpawnFromPool(randomBox, pos);

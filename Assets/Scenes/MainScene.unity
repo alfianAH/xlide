@@ -730,8 +730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: {fileID: 1586694516}
-  defaultMinutes: 0
-  defaultSeconds: 20
+  defaultMinutes: 2
+  defaultSeconds: 0
   warningCanvasGroup: {fileID: 1726976872}
   preparationPanel: {fileID: 661221491}
   timerText: {fileID: 248748555}
@@ -2023,6 +2023,8 @@ GameObject:
   - component: {fileID: 1236605413}
   - component: {fileID: 1236605415}
   - component: {fileID: 1236605414}
+  - component: {fileID: 1236605417}
+  - component: {fileID: 1236605416}
   m_Layer: 5
   m_Name: Ground
   m_TagString: Untagged
@@ -2086,6 +2088,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236605412}
   m_CullTransparentMesh: 0
+--- !u!114 &1236605416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236605412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9e910d8342c1e479cca2cb9d2e6f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSprites:
+  - {fileID: 21300000, guid: 3d4596f4b02198f479e4f1f795c65f6f, type: 3}
+  - {fileID: 21300000, guid: 3334309388328524aa6bf281ab3cf12d, type: 3}
+--- !u!95 &1236605417
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236605412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eaa3072c6528edd429651b730a906a32, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1264312432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,3 +2994,4 @@ MonoBehaviour:
   scoreText: {fileID: 264171668}
   comboText: {fileID: 1007179290}
   wrongPanel: {fileID: 979269998}
+  groundEffect: {fileID: 1236605416}

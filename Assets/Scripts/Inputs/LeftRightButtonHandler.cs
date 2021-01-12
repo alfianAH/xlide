@@ -13,6 +13,7 @@ namespace Inputs
         [SerializeField] private Text scoreText,
             comboText;
         [SerializeField] private GameObject wrongPanel;
+        [SerializeField] private GroundEffect groundEffect;
         
         private int score, combo;
 
@@ -38,6 +39,7 @@ namespace Inputs
             
             if (correctBox == bottomBoxName)
             {
+                groundEffect.PlayGroundAnimation(correctBox);
                 grid.DestroyBox();
                 AddScore(10);
                 combo++;

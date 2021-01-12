@@ -69,7 +69,7 @@ namespace Timer
         /// </summary>
         private void UpdateTimerText()
         {
-            timerText.text = timerModel.Seconds <= 15 
+            timerText.text = timerModel.Seconds <= 15 && timerModel.Minutes == 0
                 ? $"{timerModel.Seconds + timerModel.Milliseconds:F}" 
                 : $"{timerModel.Minutes:00} : {timerModel.Seconds:00}";
         }
