@@ -85,8 +85,18 @@ namespace Box
         /// <param name="j"></param>
         private void SetBox(int i, int j)
         {
-            Vector2 pos = new Vector2(startPos.x + i*offset.x, startPos.y + j*offset.y);
-            
+            Vector2 pos;
+            if (boxes[i, gridSizeY - 2] != null)
+            {
+                pos = new Vector2(startPos.x + i*offset.x, 
+                    offset.y + boxes[i, gridSizeY-2].transform.position.y);
+            }
+            else
+            {
+                pos = new Vector2(startPos.x + i*offset.x, 
+                    startPos.y + j*offset.y);
+            }
+
             int randomBox = Random.Range(0, ObjectPooler.Instance.boxes.Count);
                     
             GameObject box = ObjectPooler.Instance.SpawnFromPool(randomBox, pos);
