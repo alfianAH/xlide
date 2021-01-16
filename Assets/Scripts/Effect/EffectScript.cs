@@ -1,6 +1,6 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Effect
 {
@@ -39,7 +39,7 @@ namespace Effect
         /// <param name="delaySeconds"></param>
         /// <returns></returns>
         public static IEnumerator AddNumber(int currentNumber, int targetNumber, 
-            Text numberText, float delaySeconds)
+            TextMeshProUGUI numberText, float delaySeconds)
         {
             while (true)
             {

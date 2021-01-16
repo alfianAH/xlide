@@ -1,6 +1,6 @@
 ﻿using Effect;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Timer
 {
@@ -12,7 +12,7 @@ namespace Timer
             defaultSeconds;
         [SerializeField] private CanvasGroup warningCanvasGroup;
         [SerializeField] private GameObject preparationPanel;
-        [SerializeField] private Text timerText;
+        [SerializeField] private TextMeshProUGUI timerText;
         
         private TimerModel timerModel;
         private bool isCountingDown;

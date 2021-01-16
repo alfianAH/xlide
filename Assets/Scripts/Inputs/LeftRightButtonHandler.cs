@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Effect;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Grid = Box.Grid;
@@ -10,8 +11,8 @@ namespace Inputs
     public class LeftRightButtonHandler : MonoBehaviour
     {
         [SerializeField] private Grid grid;
-        [SerializeField] private Text scoreText,
-            comboText;
+        [SerializeField] private TextMeshProUGUI scoreText;
+        [SerializeField] private Text comboText;
         [SerializeField] private GameObject wrongPanel;
         [SerializeField] private GroundEffect groundEffect;
         
