@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GlitchMat
-  m_Shader: {fileID: -6465566751694194690, guid: f64e3f342eec14a4ca202366c0c7abc1,
+  m_Name: LogoGlitchMat 1
+  m_Shader: {fileID: -6465566751694194690, guid: 6835523d6c6a3fd44b1c52604b5484b5,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -34,6 +34,10 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_72E06C83:
+        m_Texture: {fileID: 2800000, guid: 38c8c0dac68f184448b66670ffaf9ce2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_9FD8FEC2:
         m_Texture: {fileID: 2800000, guid: 38c8c0dac68f184448b66670ffaf9ce2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -66,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_9A97A20F_Out_0:
-        m_Texture: {fileID: 2800000, guid: 38c8c0dac68f184448b66670ffaf9ce2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2b851fc46e7f7964ab08ced66ddb3fad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_E9B7907F_Out_0:
