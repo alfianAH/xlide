@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
 
 namespace Timer
 {
@@ -9,7 +9,7 @@ namespace Timer
         [SerializeField] private int defaultMinutes, 
             defaultSeconds;
         [SerializeField] private TimerView timer;
-        [SerializeField] private Text timerText;
+        [SerializeField] private TextMeshProUGUI timerText;
         
         private TimerModel timerModel;
         private bool isCountingDown;
