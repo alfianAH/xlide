@@ -5,26 +5,21 @@ namespace Effect
 {
     public class GroundEffect : MonoBehaviour
     {
-        [SerializeField] private Sprite[] groundSprites;
-        
-        private Image groundImage;
-        // private Animator groundAnimator;
+        private static Image groundImage;
         
         // Start is called before the first frame update
         private void Start()
         {
             groundImage = GetComponent<Image>();
-            // groundAnimator = GetComponent<Animator>();
         }
         
         /// <summary>
-        /// Play ground animation and change ground sprite
+        /// Change ground sprite
         /// </summary>
-        /// <param name="groundSpriteIndex">The correct box index</param>
-        public void PlayGroundAnimation(int groundSpriteIndex)
+        /// <param name="groundSprite"></param>
+        public static void ChangeGroundImage(Sprite groundSprite)
         {
-            groundImage.sprite = groundSprites[groundSpriteIndex];
-            // groundAnimator.SetTrigger("PlayAnim");
+            groundImage.sprite = groundSprite;
         }
     }
 }

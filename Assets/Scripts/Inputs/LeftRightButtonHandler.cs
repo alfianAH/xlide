@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Effect;
+using Timer;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +15,14 @@ namespace Inputs
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private Text comboText;
         [SerializeField] private GameObject wrongPanel;
-        [SerializeField] private GroundEffect groundEffect;
+        [SerializeField] private TimerView timer;
+        [SerializeField] private Sprite leftGroundSprite,
+            rightGroundSprite;
         
         private int score, combo;
-
+        private const int LeftSpriteIndex = 0,
+            RightSpriteIndex = 1;
+        
         #region MONOBEHAVIOUR_METHODS
         
         private void Start()
@@ -40,7 +45,7 @@ namespace Inputs
             
             if (correctBox == bottomBoxName)
             {
-                groundEffect.PlayGroundAnimation(correctBox);
+                ChangeGroundSprite(correctBox);
                 grid.DestroyBox();
                 AddScore(10);
                 combo++;
@@ -57,6 +62,24 @@ namespace Inputs
         #endregion
 
         #region PRIVATE_METHODS
+        
+        /// <summary>
+        /// Change Ground Sprite 
+        /// </summary>
+        /// <param name="correctBox"></param>
+        private void ChangeGroundSprite(int correctBox)
+        {
+            if (timer.IsUnderCertainSecond) return;
+            switch (correctBox)
+            {
+                case LeftSpriteIndex:
+                    GroundEffect.ChangeGroundImage(leftGroundSprite);
+                    break;
+                case RightSpriteIndex:
+                    GroundEffect.ChangeGroundImage(rightGroundSprite);
+                    break;
+            }
+        }
         
         /// <summary>
         /// Add score 
