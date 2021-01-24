@@ -21,16 +21,13 @@ namespace Timer
         #region WARNING_VARIABLES
         
         [SerializeField] private CanvasGroup warningCanvasGroup;
-        [SerializeField] private Sprite warningGroundSprite;
         [SerializeField] private TMP_FontAsset warningFontAsset;
         private bool isUnderCertainSecond;
         
         #endregion
 
         #region GETTER_SETTER
-
-        public bool IsUnderCertainSecond => isUnderCertainSecond;
-
+        
         public bool IsCountingDown
         {
             set => isCountingDown = value;
@@ -87,11 +84,14 @@ namespace Timer
                 ? $"{timerModel.Seconds + timerModel.Milliseconds:F}" 
                 : $"{timerModel.Minutes:00} : {timerModel.Seconds:00}";
         }
-
+        
+        /// <summary>
+        /// Warning time
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator WarningTime()
         {
             yield return new WaitUntil(() => isUnderCertainSecond);
-            GroundEffect.ChangeGroundImage(warningGroundSprite);
             timerText.font = warningFontAsset;
         }
         

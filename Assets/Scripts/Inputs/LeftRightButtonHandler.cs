@@ -15,7 +15,6 @@ namespace Inputs
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private Text comboText;
         [SerializeField] private GameObject wrongPanel;
-        [SerializeField] private TimerView timer;
         [SerializeField] private Sprite leftGroundSprite,
             rightGroundSprite;
         
@@ -69,7 +68,6 @@ namespace Inputs
         /// <param name="correctBox"></param>
         private void ChangeGroundSprite(int correctBox)
         {
-            if (timer.IsUnderCertainSecond) return;
             switch (correctBox)
             {
                 case LeftSpriteIndex:
