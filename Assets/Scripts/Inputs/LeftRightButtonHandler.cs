@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
 using Effect;
-using Timer;
+using Score;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Grid = Box.Grid;
 
 namespace Inputs
@@ -12,24 +11,15 @@ namespace Inputs
     public class LeftRightButtonHandler : MonoBehaviour
     {
         [SerializeField] private Grid grid;
-        [SerializeField] private TextMeshProUGUI scoreText;
-        [SerializeField] private Text comboText;
+        [SerializeField] private TextMeshProUGUI scoreText,
+            comboMessageText;
         [SerializeField] private GameObject wrongPanel;
         [SerializeField] private Sprite leftGroundSprite,
             rightGroundSprite;
+        [SerializeField] private ScoreViewModel scoreViewModel;
         
-        private int score, combo;
         private const int LeftSpriteIndex = 0,
             RightSpriteIndex = 1;
-        
-        #region MONOBEHAVIOUR_METHODS
-        
-        private void Start()
-        {
-            score = combo = 0;
-        }
-        
-        #endregion
 
         #region PUBLIC_METHODS
         
@@ -46,13 +36,13 @@ namespace Inputs
             {
                 ChangeGroundSprite(correctBox);
                 grid.DestroyBox();
-                AddScore(10);
-                combo++;
+                scoreViewModel.AddScore(10, scoreText);
+                scoreViewModel.scoreModel.combo++;
                 SetCombo(true);
             }
             else
             {
-                combo = 0;
+                scoreViewModel.scoreModel.combo = 0;
                 SetCombo(false);
                 StartCoroutine(ShowWrongPanel(2));
             }
@@ -83,18 +73,6 @@ namespace Inputs
         }
         
         /// <summary>
-        /// Add score 
-        /// </summary>
-        /// <param name="value">Additional score</param>
-        private void AddScore(int value)
-        {
-            int currentScore = score;
-            score += value + (int)((combo - 0.5)*10);
-            StartCoroutine(AddNumberEffect.AddNumber(currentScore, score, 
-                scoreText, 0.01f));
-        }
-        
-        /// <summary>
         /// Penalty if user input is false
         /// </summary>
         /// <param name="delayTime"></param>
@@ -112,8 +90,9 @@ namespace Inputs
         /// <param name="isActive"></param>
         private void SetCombo(bool isActive)
         {
-            comboText.text = $"Combo x{combo}";
-            comboText.gameObject.SetActive(isActive);
+            scoreViewModel.SetComboMessage(comboMessageText);
+            // BUG
+            comboMessageText.gameObject.SetActive(isActive);
         }
         
         #endregion
