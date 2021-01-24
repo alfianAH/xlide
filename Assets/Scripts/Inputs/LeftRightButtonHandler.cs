@@ -76,6 +76,9 @@ namespace Inputs
                 case RightSpriteIndex:
                     GroundEffect.ChangeGroundImage(rightGroundSprite);
                     break;
+                default:
+                    Debug.LogWarning($"Box {correctBox} is not in list");
+                    break;
             }
         }
         
@@ -87,7 +90,7 @@ namespace Inputs
         {
             int currentScore = score;
             score += value + (int)((combo - 0.5)*10);
-            StartCoroutine(EffectScript.AddNumber(currentScore, score, 
+            StartCoroutine(AddNumberEffect.AddNumber(currentScore, score, 
                 scoreText, 0.01f));
         }
         

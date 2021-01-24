@@ -66,7 +66,7 @@ namespace Timer
             if (timerModel.Seconds <= 10 && timerModel.Minutes == 0)
             {
                 isUnderCertainSecond = true;
-                EffectScript.FadeEffect(warningCanvasGroup, startAlpha, 
+                FadeEffect.Fade(warningCanvasGroup, startAlpha, 
                     timerModel.Milliseconds, 1);
             }
         }
