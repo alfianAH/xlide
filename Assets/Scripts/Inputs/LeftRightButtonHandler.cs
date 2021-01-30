@@ -17,6 +17,7 @@ namespace Inputs
         [SerializeField] private Sprite leftGroundSprite,
             rightGroundSprite;
         [SerializeField] private ScoreViewModel scoreViewModel;
+        [SerializeField] private Animator comboTextAnimator;
         
         private const int LeftSpriteIndex = 0,
             RightSpriteIndex = 1;
@@ -38,12 +39,12 @@ namespace Inputs
                 grid.DestroyBox();
                 scoreViewModel.AddScore(10, scoreText);
                 scoreViewModel.scoreModel.combo++;
-                SetCombo(true);
+                SetCombo();
             }
             else
             {
                 scoreViewModel.scoreModel.combo = 0;
-                SetCombo(false);
+                SetCombo();
                 StartCoroutine(ShowWrongPanel(2));
             }
         }
@@ -85,14 +86,11 @@ namespace Inputs
         }
         
         /// <summary>
-        /// Set combo text and isActive
+        /// Set combo text
         /// </summary>
-        /// <param name="isActive"></param>
-        private void SetCombo(bool isActive)
+        private void SetCombo()
         {
-            scoreViewModel.SetComboMessage(comboMessageText);
-            // BUG
-            comboMessageText.gameObject.SetActive(isActive);
+            scoreViewModel.SetComboMessage(comboMessageText, comboTextAnimator);
         }
         
         #endregion

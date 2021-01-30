@@ -9,6 +9,7 @@ namespace Score
         [SerializeField] private int comboStep;
         
         public ScoreModel scoreModel;
+        private static readonly int PlayAnim = Animator.StringToHash("PlayAnim");
 
         /// <summary>
         /// Add score 
@@ -24,16 +25,18 @@ namespace Score
             StartCoroutine(AddNumberEffect.AddNumber(currentScore, 
                 scoreModel.score, scoreText, 0.01f));
         }
-        
+
         /// <summary>
         /// Set combo number and message
         /// </summary>
         /// <param name="comboMessageText"></param>
-        public void SetComboMessage(TextMeshProUGUI comboMessageText)
+        /// <param name="comboMessageAnimator"></param>
+        public void SetComboMessage(TextMeshProUGUI comboMessageText, 
+            Animator comboMessageAnimator)
         {
             if (scoreModel.combo % comboStep == 0 && scoreModel.combo != 0)
             {
-                Debug.Log(scoreModel.combo);
+                comboMessageAnimator.SetTrigger(PlayAnim);
                 // Set index between 0 - comboMessage.Count
                 int index = (scoreModel.combo / comboStep - 1) % scoreModel.comboMessage.Count;
                 
