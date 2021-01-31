@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Box
 {
@@ -7,6 +9,8 @@ namespace Box
         public int gridSizeX, 
             gridSizeY;
         public GameObject boxPrefab;
+        
+        [SerializeField] private LevelManager levelManager;
         
         private Vector3 startPos, offset;
         private GameObject[,] boxes;
@@ -81,27 +85,54 @@ namespace Box
         /// <summary>
         /// Set Box in index i, j
         /// </summary>
-        /// <param name="i"></param>
-        /// <param name="j"></param>
-        private void SetBox(int i, int j)
+        /// <param name="gridX"></param>
+        /// <param name="gridY"></param>
+        private void SetBox(int gridX, int gridY)
         {
             Vector2 pos;
-            if (boxes[i, gridSizeY - 2] != null)
+            if (boxes[gridX, gridSizeY - 2] != null)
             {
-                pos = new Vector2(startPos.x + i*offset.x, 
-                    offset.y + boxes[i, gridSizeY-2].transform.position.y);
+                pos = new Vector2(startPos.x + gridX*offset.x, 
+                    offset.y + boxes[gridX, gridSizeY-2].transform.position.y);
             }
             else
             {
-                pos = new Vector2(startPos.x + i*offset.x, 
-                    startPos.y + j*offset.y);
+                pos = new Vector2(startPos.x + gridX*offset.x, 
+                    startPos.y + gridY*offset.y);
             }
 
-            int randomBox = Random.Range(0, ObjectPooler.Instance.boxes.Count);
-                    
+            int randomBox = SetRandomNumber(gridX, gridY);
             GameObject box = ObjectPooler.Instance.SpawnFromPool(randomBox, pos);
-                    
-            boxes[i, j] = box;
+            boxes[gridX, gridY] = box;
+        }
+
+        /// <summary>
+        /// Set random number for boxes
+        /// </summary>
+        /// <param name="gridX"></param>
+        /// <param name="gridY"></param>
+        /// <returns></returns>
+        private int SetRandomNumber(int gridX, int gridY)
+        {
+            int randomBox = Random.Range(0, ObjectPooler.Instance.boxes.Count);
+            
+            // Check box other than boxes[0,0]
+            if (gridY != 0)
+            {
+                int previousValue = Int32.Parse(boxes[gridX, gridY - 1].name);
+                
+                // Check similarity in boxes
+                if (levelManager.IsSimilarLimit(randomBox, previousValue))
+                {
+                    // Loop until random box != targetValue
+                    while (randomBox == previousValue)
+                    {
+                        randomBox = Random.Range(0, ObjectPooler.Instance.boxes.Count);
+                    }
+                }
+            }
+
+            return randomBox;
         }
         
         /// <summary>
