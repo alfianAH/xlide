@@ -11,7 +11,6 @@ namespace Timer
         [Range(0, 59)]
         [SerializeField] private int defaultMinutes, 
             defaultSeconds;
-        [SerializeField] private GameObject preparationPanel;
         [SerializeField] private TextMeshProUGUI timerText;
         
         private TimerModel timerModel;
@@ -41,7 +40,6 @@ namespace Timer
         private void Start()
         {
             startAlpha = warningCanvasGroup.alpha;
-            preparationPanel.SetActive(true);
             
             timerModel = new TimerModel
             {

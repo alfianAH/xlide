@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Audio;
 using Effect;
 using Score;
 using TMPro;
@@ -19,9 +20,21 @@ namespace Inputs
         [SerializeField] private ScoreViewModel scoreViewModel;
         [SerializeField] private Animator comboTextAnimator;
         
+        private AudioManager audioManager;
         private const int LeftSpriteIndex = 0,
             RightSpriteIndex = 1;
 
+        private const string WrongClickAudio = "WrongClick";
+
+        #region MONOBEHAVIOUR_METHODS
+
+        private void Start()
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
+        #endregion
+        
         #region PUBLIC_METHODS
         
         /// <summary>
@@ -43,6 +56,7 @@ namespace Inputs
             }
             else
             {
+                audioManager.Play(WrongClickAudio);
                 scoreViewModel.scoreModel.combo = 0;
                 SetCombo();
                 StartCoroutine(ShowWrongPanel(2));

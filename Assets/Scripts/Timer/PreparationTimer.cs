@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Audio;
+using TMPro;
 using UnityEngine;
 
 namespace Timer
@@ -10,16 +11,23 @@ namespace Timer
             defaultSeconds;
         [SerializeField] private TimerView timer;
         [SerializeField] private TextMeshProUGUI timerText;
-        
+
+        private AudioManager audioManager;
         private TimerModel timerModel;
         private bool isCountingDown;
+        private const string PreparationTimeAudio = "PreparationTime";
 
         #region MONOBEHAVIOUR_METHODS
+
+        private void Awake()
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
 
         private void OnEnable()
         {
             isCountingDown = true;
-            
+            audioManager.Play(PreparationTimeAudio);
             timerModel = new TimerModel
             {
                 Minutes = defaultMinutes,

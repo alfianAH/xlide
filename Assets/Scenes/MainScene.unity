@@ -1165,7 +1165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &661221492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2905,9 +2905,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: {fileID: 1586694516}
-  defaultMinutes: 1
+  defaultMinutes: 0
   defaultSeconds: 15
-  preparationPanel: {fileID: 661221491}
   timerText: {fileID: 1838448855}
   warningCanvasGroup: {fileID: 1726976872}
   warningFontAsset: {fileID: 11400000, guid: a303e8bcfb52cd04b8197998ba1f54d4, type: 2}

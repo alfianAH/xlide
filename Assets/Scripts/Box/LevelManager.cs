@@ -4,7 +4,7 @@ namespace Box
 {
     public class LevelManager : MonoBehaviour
     {
-        public int similarityLimit;
+        [SerializeField] private int similarityLimit;
         private int similarity;
         
         /// <summary>
