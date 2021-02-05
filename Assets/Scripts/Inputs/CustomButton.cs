@@ -15,7 +15,6 @@ namespace Inputs
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log("Click");
             audioManager.Play(ListSound.ButtonClick);
         }
     }

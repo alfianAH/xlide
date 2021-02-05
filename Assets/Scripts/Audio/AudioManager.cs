@@ -9,6 +9,8 @@ namespace Audio
         
         private static AudioManager instance;
 
+        #region MONOBEHAVIOUR_METHODS
+        
         private void Awake()
         {
             SetInstance();
@@ -29,6 +31,24 @@ namespace Audio
             Play(ListSound.BackgroundMusic);
         }
         
+        #endregion
+
+        #region PUBLIC_METHODS
+        
+        /// <summary>
+        /// Play audio
+        /// To call method in scripts
+        /// </summary>
+        /// <param name="listSound"></param>
+        public void Play(ListSound listSound)
+        {
+            GetAudioSource(listSound).Play();
+        }
+        
+        #endregion
+
+        #region PRIVATE_METHODS
+        
         /// <summary>
         /// Set instance and don't destroy on load
         /// </summary>
@@ -45,16 +65,6 @@ namespace Audio
             }
             
             DontDestroyOnLoad(gameObject);
-        }
-
-        /// <summary>
-        /// Play audio
-        /// To call method in scripts
-        /// </summary>
-        /// <param name="listSound"></param>
-        public void Play(ListSound listSound)
-        {
-            GetAudioSource(listSound).Play();
         }
         
         /// <summary>
@@ -74,5 +84,7 @@ namespace Audio
             
             return s.source;
         }
+        
+        #endregion
     }
 }
