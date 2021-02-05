@@ -13,8 +13,6 @@ namespace Audio
     [System.Serializable]
     public class Sound
     {
-        public string name;
-
         public ListSound listSound;
         
         public AudioClip clip;

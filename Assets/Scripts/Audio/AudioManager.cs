@@ -1,10 +1,12 @@
 ﻿using System;
+using UnityConfig;
 using UnityEngine;
 
 namespace Audio
 {
     public class AudioManager: MonoBehaviour
     {
+        [ArrayElementTitle("listSound")]
         public Sound[] sounds;
         
         private static AudioManager instance;
