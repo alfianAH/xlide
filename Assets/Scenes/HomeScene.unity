@@ -938,29 +938,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: ButtonClick
-    listSound: 1
+  - listSound: 1
     clip: {fileID: 8300000, guid: e22e6ed6f3af2ee46a1c6252455244b4, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: PreparationTime
-    listSound: 2
+  - listSound: 2
     clip: {fileID: 8300000, guid: aca55cbae35be85439f4789af646af44, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: BackgroundMusic
-    listSound: 0
+  - listSound: 0
     clip: {fileID: 8300000, guid: ba7b6162103c68645a7529e36ac96d5c, type: 3}
     volume: 0.05
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: WrongClick
-    listSound: 3
+  - listSound: 3
     clip: {fileID: 8300000, guid: 3a069768c93a22e4c908d60a035f32e7, type: 3}
     volume: 1
     pitch: 1
