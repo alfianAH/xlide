@@ -15,7 +15,6 @@ namespace Timer
         private AudioManager audioManager;
         private TimerModel timerModel;
         private bool isCountingDown;
-        private const string PreparationTimeAudio = "PreparationTime";
 
         #region MONOBEHAVIOUR_METHODS
 
@@ -27,7 +26,7 @@ namespace Timer
         private void OnEnable()
         {
             isCountingDown = true;
-            audioManager.Play(PreparationTimeAudio);
+            audioManager.Play(ListSound.PreparationTime);
             timerModel = new TimerModel
             {
                 Minutes = defaultMinutes,

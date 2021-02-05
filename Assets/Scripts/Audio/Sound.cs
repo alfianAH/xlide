@@ -2,10 +2,20 @@
 
 namespace Audio
 {
+    public enum ListSound
+    {
+        BackgroundMusic,
+        ButtonClick,
+        PreparationTime,
+        WrongClick
+    }
+    
     [System.Serializable]
     public class Sound
     {
         public string name;
+
+        public ListSound listSound;
         
         public AudioClip clip;
         

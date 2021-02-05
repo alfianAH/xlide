@@ -8,21 +8,10 @@ namespace Audio
         public Sound[] sounds;
         
         private static AudioManager instance;
-        private const string BackgroundMusic = "BackgroundMusic";
 
         private void Awake()
         {
-            if (instance ==  null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-                return;
-            }
-            
-            DontDestroyOnLoad(gameObject);
+            SetInstance();
             
             foreach (Sound sound in sounds)
             {
@@ -37,22 +26,71 @@ namespace Audio
 
         private void Start()
         {
-            Play(BackgroundMusic);
+            Play(ListSound.BackgroundMusic);
+        }
+        
+        /// <summary>
+        /// Set instance and don't destroy on load
+        /// </summary>
+        private void SetInstance()
+        {
+            if (instance ==  null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
+            DontDestroyOnLoad(gameObject);
         }
 
         /// <summary>
         /// Play audio
+        /// To call method in scripts
         /// </summary>
-        /// <param name="audioName">Name of the file</param>
-        public void Play(string audioName)
+        /// <param name="listSound"></param>
+        public void Play(ListSound listSound)
         {
-            Sound s = Array.Find(sounds, sound => sound.name == audioName);
+            GetAudioSource(listSound).Play();
+        }
+
+        /// <summary>
+        /// Overload Play method
+        /// To call method in Unity
+        /// </summary>
+        /// <param name="soundName">Name of the sound</param>
+        public void Play(string soundName)
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == soundName);
+            
             if (s == null)
             {
-                Debug.LogError($"Sound: {audioName} not found!");
+                Debug.LogError($"Sound: {soundName} not found!");
                 return;
             }
+            
             s.source.Play();
+        }
+        
+        /// <summary>
+        /// Get audio source for enum
+        /// </summary>
+        /// <param name="listSound"></param>
+        /// <returns></returns>
+        private AudioSource GetAudioSource(ListSound listSound)
+        {
+            Sound s = Array.Find(sounds, sound => sound.listSound == listSound);
+            
+            if (s == null)
+            {
+                Debug.LogError($"Sound: {listSound} not found!");
+                return null;
+            }
+            
+            return s.source;
         }
     }
 }

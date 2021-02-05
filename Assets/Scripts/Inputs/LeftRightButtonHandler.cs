@@ -24,8 +24,6 @@ namespace Inputs
         private const int LeftSpriteIndex = 0,
             RightSpriteIndex = 1;
 
-        private const string WrongClickAudio = "WrongClick";
-
         #region MONOBEHAVIOUR_METHODS
 
         private void Start()
@@ -56,7 +54,7 @@ namespace Inputs
             }
             else
             {
-                audioManager.Play(WrongClickAudio);
+                audioManager.Play(ListSound.WrongClick);
                 scoreViewModel.scoreModel.combo = 0;
                 SetCombo();
                 StartCoroutine(ShowWrongPanel(2));
