@@ -56,24 +56,6 @@ namespace Audio
         {
             GetAudioSource(listSound).Play();
         }
-
-        /// <summary>
-        /// Overload Play method
-        /// To call method in Unity
-        /// </summary>
-        /// <param name="soundName">Name of the sound</param>
-        public void Play(string soundName)
-        {
-            Sound s = Array.Find(sounds, sound => sound.name == soundName);
-            
-            if (s == null)
-            {
-                Debug.LogError($"Sound: {soundName} not found!");
-                return;
-            }
-            
-            s.source.Play();
-        }
         
         /// <summary>
         /// Get audio source for enum
